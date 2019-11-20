@@ -11,6 +11,18 @@ class Modal extends Component {
                 {(value)=>{
                     const {modalOpen,closeModal} = value;
                     const{img, title,price} =value.modalProduct;
+                    var myPrice = price;
+                      var reverse = myPrice
+                          .toString()
+                          .split("")
+                          .reverse()
+                          .join(""),
+                        thousands = reverse.match(/\d{1,3}/g);
+                      thousands = thousands
+                        .join(".")
+                        .split("")
+                        .reverse()
+                        .join("");
 
                     if(!modalOpen){
                         return null;
@@ -23,7 +35,7 @@ class Modal extends Component {
                                             <h5>item added to the cart</h5>
                                             <img src={img} className="img-fluid" alt="product"/>
                                             <h5>{title}</h5>
-                                            <h5 className="tex-muted">price: $ {price}</h5>
+                                            <h5 className="tex-muted">price: IDR {thousands}</h5>
                                             <Link to='/'>
                                                 <ButtonContainer onClick={()=>closeModal()}>
                                                     store
