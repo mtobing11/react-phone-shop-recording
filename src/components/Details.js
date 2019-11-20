@@ -9,6 +9,18 @@ class Details extends Component {
             <ProductConsumer>
                 {(value)=>{
                    const {id, company, img, info,price, title, inCart} = value.detailProduct;
+                   var myPrice = price;
+          var reverse = myPrice
+              .toString()
+              .split("")
+              .reverse()
+              .join(""),
+            thousands = reverse.match(/\d{1,3}/g);
+          thousands = thousands
+            .join(".")
+            .split("")
+            .reverse()
+            .join("");
                    return(
                        <div className="container py-5">
                            {/* title */}
@@ -33,8 +45,8 @@ class Details extends Component {
                                         </h4>
                                         <h4 className="text-blue">
                                             <strong>
-                                                price: <span>$</span>
-                                                {price}
+                                                price: <span>IDR </span>
+                                                {thousands}
                                             </strong>
                                         </h4>
                                         <p className="text-capitalize font-weight-bold mt-3 mb-0">
