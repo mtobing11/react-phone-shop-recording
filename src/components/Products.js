@@ -7,6 +7,18 @@ import PropTypes from 'prop-types';
 class Products extends Component {
     render() {
         const {id, title, img, price, inCart} = this.props.product;
+        var myPrice = price;
+        var reverse = myPrice
+            .toString()
+            .split("")
+            .reverse()
+            .join(""),
+          thousands = reverse.match(/\d{1,3}/g);
+        thousands = thousands
+          .join(".")
+          .split("")
+          .reverse()
+          .join("");
         return (
             <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
                 <div className="card">
@@ -37,8 +49,8 @@ class Products extends Component {
                             {title}
                         </p>
                         <h5 className="text-blue font-italic mb-0">
-                            <span className="mr-1">$</span>
-                            {price}
+                            <span className="mr-1">IDR </span>
+                            {thousands}
                         </h5>
                     </div>
                 </div>
